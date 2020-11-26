@@ -3,11 +3,16 @@
 from tkinter import *
 
 
+def encod_gks(txt):
+    pass
+
+
+
 def co():
     user_name = co_txt_entry.get()
 
     if user_name == "Jay":
-				open(user_name + ".gks", "w")
+        fichier = open(user_name + ".gks", "a")
         windowAl = Tk()
         label_Al = Label(windowAl, text="Bonjour Jay", font=("Courrier", 40), bg='#ffd100', fg='white')
         windowAl.title(user_name)
