@@ -15,7 +15,8 @@ def co():
         windowAl.geometry("1200x750")
         windowAl.minsize(480, 360)
         windowAl.config(background="#ffd100")
-        main_button = button(windowAl, txt="menu", font=("courrier", 25), bg='#ffd100', fg='white')
+        main_button = Button(windowAl, text="menu", font=("courrier", 25), bg='#ffd100', fg='white')
+        main_button.place(x=10, y=10)
 
         label_Al.pack()
         main_button.pack()
@@ -54,10 +55,3 @@ co_txt_entry.pack()
 co_button.pack(pady=25, fill=X)
 frame.pack(expand=YES)
 window.mainloop()
-
-
-        
-
-
-
-
