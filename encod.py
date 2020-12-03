@@ -1,0 +1,1 @@
+def encod(txt, file):
