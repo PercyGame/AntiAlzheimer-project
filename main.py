@@ -10,13 +10,15 @@ def co():
     if user_name == "Jay":
         fichier = open(user_name + ".gks", "a")
         windowAl = Tk()
-        label_Al = Label(windowAl, text="Bonjour" + user_name, font=("Courrier", 40), bg='#ffd100', fg='white')
+        label_Al = Label(windowAl, text="Bonjour " + user_name, font=("Courrier", 40), bg='#ffd100', fg='white')
         windowAl.title(user_name)
         windowAl.geometry("1200x750")
         windowAl.minsize(480, 360)
         windowAl.config(background="#ffd100")
+        main_button = button(windowAl, txt="menu", font=("courrier", 25), bg='#ffd100', fg='white')
 
         label_Al.pack()
+        main_button.pack()
         windowAl.mainloop()
 
 
