@@ -31,7 +31,6 @@ window = Tk()
 window.title("Science plus ( par Henry Legrand )")
 window.geometry("1080x720")
 window.minsize(480, 360)
-window.iconbitmap("logo-atom_355-543.ico")
 window.config(background='#ffd100')
 
 # frame
