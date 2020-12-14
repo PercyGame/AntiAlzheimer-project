@@ -1,4 +1,6 @@
-"""Ceci les le main AntiAlzheimer project"""
+"""
+Ceci les le main AntiAlzheimer project
+"""
 
 from tkinter import *
 
