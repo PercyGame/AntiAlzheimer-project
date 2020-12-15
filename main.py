@@ -9,25 +9,34 @@ from tkinter import *
 def co():
     user_name = co_txt_entry.get()
 
-    if user_name == "Jay":
+    # Créer (ou ouvre s'il existe déjà) le fichier de sauvegarde de l'utilisateur
+    fichier = open(user_name + ".gks", "a")
+    # fenetre avec les exercices etc...
+    windowAl = Tk()
+        
+    # variable pour la boucle du programme
+    run = True
+        
+    """
+    Boucle du programme :
+    Avantage d'un "while":
+    - on peut la casser à tout moment si on a besoin
+    Inconvénients:
+    - Plus il y a d'instruction, plus la boucle et longue et donc plus il y a de laggs potentiels
+    """
+    while run:
+        
+        label_Al = Label(windowAl, text="Bonjour " + user_name, font=("Courrier", 40), bg='#ffd100', fg='white')
+        windowAl.title(user_name)
+        windowAl.geometry("1200x750")
+        windowAl.minsize(480, 360)
+        windowAl.config(background="#ffd100")
+        main_button = Button(windowAl, text="menu", font=("courrier", 25), bg='#ffd100', fg='white')
+        main_button.pack()
+        main_button.place(x=10, y=10)
+        label_Al.pack()
+        windowAl.mainloop()
 
-        run = True
-        fichier = open(user_name + ".gks", "a")
-        windowAl = Tk()
-
-        while run:
-            
-            label_Al = Label(windowAl, text="Bonjour " + user_name, font=("Courrier", 40), bg='#ffd100', fg='white')
-            windowAl.title(user_name)
-            windowAl.geometry("1200x750")
-            windowAl.minsize(480, 360)
-            windowAl.config(background="#ffd100")
-            main_button = Button(windowAl, text="menu", font=("courrier", 25), bg='#ffd100', fg='white')
-            main_button.pack()
-            main_button.place(x=10, y=10)
-
-            label_Al.pack()
-            windowAl.mainloop()
 
 
 
@@ -35,8 +44,7 @@ def co():
 
 
 
-
-# créer la fenetre
+# créer la fenetre du logeur
 window = Tk()
 
 #personaliser fenetre
