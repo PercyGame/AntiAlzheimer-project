@@ -39,11 +39,6 @@ def co():
 
 
 
-
-
-
-
-
 # créer la fenetre du logeur
 window = Tk()
 
