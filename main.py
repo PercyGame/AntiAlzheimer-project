@@ -34,7 +34,7 @@ def admin_interface():
 def co():
     user_name = co_txt_entry.get()
     admin_name = user_name
-    admin_name.upper()
+    admin_name = admin_name.upper()
     if admin_name == "ADMIN":
         admin_interface()
         
