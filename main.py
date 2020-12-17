@@ -19,12 +19,12 @@ def admin_interface():
     - Plus il y a d'instruction, plus la boucle et longue et donc plus il y a de laggs potentiels
     """
     while run:
-        label_Al = Label(windowAl, text="___/Interface administrateur\___", font=("Courrier", 40), bg='#395D67', fg='#246D39')
-        windowAl.title(user_name)
+        label_Al = Label(windowAl, text="___/Interface administrateur\___", font=("Courrier", 40), bg='#395D67', fg='#FFAA00')
+        windowAl.title("ADMIN MODE")
         windowAl.geometry("1200x750")
         windowAl.minsize(480, 360)
         windowAl.config(background="#395D67")
-        main_button = Button(windowAl, text="menu", font=("courrier", 25), bg='#395D67', fg='#246D39')
+        main_button = Button(windowAl, text="menu", font=("courrier", 25), bg='#395D67', fg='#FFAA00')
         main_button.pack()
         main_button.place(x=5, y=5)
         label_Al.pack()
@@ -98,4 +98,3 @@ co_txt_entry.pack()
 co_button.pack(pady=25, fill=X)
 frame.pack(expand=YES)
 window.mainloop()
-
