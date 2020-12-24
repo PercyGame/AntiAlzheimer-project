@@ -3,7 +3,14 @@ Ceci les le main AntiAlzheimer project
 """
 file = open("user.gks", "w")
 file.close()
+
+"""
+Ceci les le main AntiAlzheimer project
+"""
+file = open("user.gks", "w")
+file.close()
 from tkinter import *
+
 
 def admin_interface():
     windowAl = Tk()
@@ -19,15 +26,28 @@ def admin_interface():
     - Plus il y a d'instruction, plus la boucle et longue et donc plus il y a de laggs potentiels
     """
     while run:
-        label_Al = Label(windowAl, text="___/Interface administrateur\___", font=("Courrier", 40), bg='#395D67', fg='#FFAA00')
+        label_Al = Label(windowAl, text="Interface administrateur", font=("Courrier", 40), bg='#395D67',fg='#FFAA00')
         windowAl.title("ADMIN MODE")
         windowAl.geometry("1200x750")
-        windowAl.minsize(480, 360)
-        windowAl.config(background="#395D67")
+        windowAl.minsize(1200, 750)
+        """
+        menu_mode est la variable qui permet de choisir le menu où on veut aller, comme si-dessous :
+        0 = main menu
+        1 = ...
+        """
+        menu_mode = 0
+
+        if menu_mode == 0:
+            label_Al = Label(windowAl, text="Interface administrateur", font=("Courrier", 40), bg='#395D67',fg='#FFAA00')
+            windowAl.config(background="#395D67")
+            label_Al.pack()
+
+
         main_button = Button(windowAl, text="menu", font=("courrier", 25), bg='#395D67', fg='#FFAA00')
         main_button.pack()
         main_button.place(x=5, y=5)
-        label_Al.pack()
+
+
         windowAl.mainloop()
 
 
@@ -37,7 +57,7 @@ def co():
     admin_name = admin_name.upper()
     if admin_name == "ADMIN":
         admin_interface()
-        
+
     else:
         reference_file = open("user.gks", "r")
         # Créer (ou ouvre s'il existe déjà) le fichier de sauvegarde de l'utilisateur
@@ -56,19 +76,37 @@ def co():
         - Plus il y a d'instruction, plus la boucle et longue et donc plus il y a de laggs potentiels
         """
         while run:
-            label_Al = Label(windowAl, text="Bonjour " + user_name, font=("Courrier", 40), bg='#ffd100', fg='white')
+
+            """
+            menu_mode est la variable qui permet de choisir le menu où on veut aller, comme si-dessous :
+            0 = main menu
+            1 = ...
+            """
+            menu_mode = 0
             windowAl.title(user_name)
             windowAl.geometry("1200x750")
-            windowAl.minsize(480, 360)
-            windowAl.config(background="#ffd100")
-            main_button = Button(windowAl, text="menu", font=("courrier", 25), bg='#ffd100', fg='white')
-            main_button.pack()
-            main_button.place(x=5, y=5)
-            label_Al.pack()
-            windowAl.mainloop()
+            windowAl.minsize(1200, 750)
+            if menu_mode == 0:
+                label_Al = Label(windowAl, text="Bonjour " + user_name, font=("Courrier", 40), bg='#ffd100', fg='white')
+                windowAl.config(background="#ffd100")
+
+                label_Al.pack()
+                windowAl.mainloop()
 
 
-            
+            elif menu_mode == 1:
+                main_button = Button(windowAl, text="menu", font=("courrier", 25), bg='#ffd100', fg='white')
+                main_button.pack()
+                main_button.place(x=5, y=5)
+
+                windowAl.mainloop()
+
+
+
+
+
+
+
 # créer la fenetre du logeur
 window = Tk()
 
