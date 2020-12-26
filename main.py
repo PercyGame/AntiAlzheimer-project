@@ -3,13 +3,9 @@ Ceci les le main AntiAlzheimer project
 """
 file = open("user.gks", "w")
 file.close()
-
-"""
-Ceci les le main AntiAlzheimer project
-"""
-file = open("user.gks", "w")
-file.close()
 from tkinter import *
+from datetime import *
+
 
 
 def admin_interface():
@@ -62,11 +58,20 @@ def co():
         reference_file = open("user.gks", "r")
         # Créer (ou ouvre s'il existe déjà) le fichier de sauvegarde de l'utilisateur
         fichier = open(user_name + ".gks", "a")
+        fichier.write("latest connection :\n")
+        fichier.write(str(datetime.now()) + "\n")
         # fenetre avec les exercices etc...
         windowAl = Tk()
 
         # variable pour la boucle du programme
         run = True
+
+        """
+        menu_mode est la variable qui permet de choisir le menu où on veut aller, comme si-dessous :
+        0 = main menu
+        1 = pour écrire son journal quotidien
+        """
+        menu_mode = 0
 
         """
         Boucle du programme :
@@ -76,25 +81,39 @@ def co():
         - Plus il y a d'instruction, plus la boucle et longue et donc plus il y a de laggs potentiels
         """
         while run:
+            print(menu_mode)
 
-            """
-            menu_mode est la variable qui permet de choisir le menu où on veut aller, comme si-dessous :
-            0 = main menu
-            1 = ...
-            """
+
+            def write_his_day():
+                menu_mode = 1
+
             menu_mode = 0
             windowAl.title(user_name)
             windowAl.geometry("1200x750")
             windowAl.minsize(1200, 750)
             if menu_mode == 0:
-                label_Al = Label(windowAl, text="Bonjour " + user_name, font=("Courrier", 40), bg='#ffd100', fg='white')
-                windowAl.config(background="#ffd100")
+                label_Al = Label(windowAl, text="Bonjour " + user_name, font=("Courrier", 40), bg='#808080', fg='black')
+                windowAl.config(background="#808080")
+                game_button = Button(windowAl, text="Jeu", font=("courrier", 25), bg='#808080', fg='black')
+                game_button.pack()
+                game_button.place(x=250, y=200)
+
+                write_button = Button(windowAl, text="J'écrit ma journée", font=("courrier", 25), bg='#808080', fg='black', command=write_his_day)
+                write_button.pack()
+                write_button.place(x=650, y=200)
 
                 label_Al.pack()
                 windowAl.mainloop()
 
 
             elif menu_mode == 1:
+                main_button = Button(windowAl, text="menu", font=("courrier", 25), bg='#ffd100', fg='white')
+                main_button.pack()
+                main_button.place(x=5, y=5)
+
+                windowAl.mainloop()
+
+            elif menu_mode == 2:
                 main_button = Button(windowAl, text="menu", font=("courrier", 25), bg='#ffd100', fg='white')
                 main_button.pack()
                 main_button.place(x=5, y=5)
