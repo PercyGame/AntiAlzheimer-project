@@ -5,8 +5,11 @@ file = open("user.gks", "w")
 file.close()
 from tkinter import *
 from datetime import *
+import webbrowser
 
-
+def help():
+    # ouvrir une page web avec de l'aide
+    webbrowser.open_new("https://sites.google.com/view/projet-alzheimer/accueil")
 
 def admin_interface():
     windowAl = Tk()
@@ -48,6 +51,7 @@ def admin_interface():
 
 
 def co():
+    window.quit()
     user_name = co_txt_entry.get()
     admin_name = user_name
     admin_name = admin_name.upper()
@@ -63,62 +67,56 @@ def co():
         # fenetre avec les exercices etc...
         windowAl = Tk()
 
-        # variable pour la boucle du programme
-        run = True
+        def write_his_day():
+            pass
 
-        """
-        menu_mode est la variable qui permet de choisir le menu où on veut aller, comme si-dessous :
-        0 = main menu
-        1 = pour écrire son journal quotidien
-        """
-        menu_mode = 0
-
-        """
-        Boucle du programme :
-        Avantage d'un "while":
-        - on peut la casser à tout moment si on a besoin
-        Inconvénients:
-        - Plus il y a d'instruction, plus la boucle et longue et donc plus il y a de laggs potentiels
-        """
-        while run:
-            print(menu_mode)
-
-
-            def write_his_day():
-                menu_mode = 1
-
-            menu_mode = 0
+        def main_menu():
             windowAl.title(user_name)
             windowAl.geometry("1200x750")
             windowAl.minsize(1200, 750)
-            if menu_mode == 0:
-                label_Al = Label(windowAl, text="Bonjour " + user_name, font=("Courrier", 40), bg='#808080', fg='black')
-                windowAl.config(background="#808080")
-                game_button = Button(windowAl, text="Jeu", font=("courrier", 25), bg='#808080', fg='black')
-                game_button.pack()
-                game_button.place(x=250, y=200)
+            label_Al = Label(windowAl, text="Bonjour " + user_name, font=("Courrier", 40), bg='#808080', fg='black')
+            windowAl.config(background="#808080")
+            game_button = Button(windowAl, text="Jeu", font=("courrier", 25), bg='#808080', fg='black')
+            game_button.pack()
+            game_button.place(x=250, y=200)
 
-                write_button = Button(windowAl, text="J'écrit ma journée", font=("courrier", 25), bg='#808080', fg='black', command=write_his_day)
-                write_button.pack()
-                write_button.place(x=650, y=200)
+            write_button = Button(windowAl, text="J'écrit ma journée", font=("courrier", 25), bg='#808080', fg='black', command=write_his_day)
+            write_button.pack()
+            write_button.place(x=650, y=200)
 
-                label_Al.pack()
-                windowAl.mainloop()
+            # création barre de menu
+            menu_bar = Menu(windowAl)
+            # créer un menu de navigation
+            navigation_menu = Menu(menu_bar, tearoff=0)
+            navigation_menu.add_command(label="journal", command=write_his_day)
+            menu_bar.add_cascade(label="navigation", menu=navigation_menu)
+
+            # créer un menu d'aide
+            help_menu = Menu(menu_bar, tearoff=0)
+            help_menu.add_command(label="Aide", command=help)
+            help_menu.add_command(label="Quitter", command=windowAl.quit)
+            menu_bar.add_cascade(label="Aide", menu=help_menu)
+
+            # config window pour le menu
+            windowAl.config(menu=menu_bar)
+
+            label_Al.pack()
+            windowAl.mainloop()
+
+        main_menu()
 
 
-            elif menu_mode == 1:
-                main_button = Button(windowAl, text="menu", font=("courrier", 25), bg='#ffd100', fg='white')
-                main_button.pack()
-                main_button.place(x=5, y=5)
+        """main_button = Button(windowAl, text="menu", font=("courrier", 25), bg='#ffd100', fg='white')
+        main_button.pack()
+        main_button.place(x=5, y=5)
 
-                windowAl.mainloop()
+        windowAl.mainloop()
 
-            elif menu_mode == 2:
-                main_button = Button(windowAl, text="menu", font=("courrier", 25), bg='#ffd100', fg='white')
-                main_button.pack()
-                main_button.place(x=5, y=5)
+        main_button = Button(windowAl, text="menu", font=("courrier", 25), bg='#ffd100', fg='white')
+        main_button.pack()
+        main_button.place(x=5, y=5)
 
-                windowAl.mainloop()
+        windowAl.mainloop()"""
 
 
 
@@ -130,7 +128,7 @@ def co():
 window = Tk()
 
 # personaliser fenetre
-window.title("Science plus ( par Henry Legrand )")
+window.title("Science plus")
 window.geometry("1080x720")
 window.minsize(480, 360)
 window.config(background='#ffd100')
