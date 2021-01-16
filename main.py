@@ -1,6 +1,7 @@
 """
-Ceci les le main AntiAlzheimer project
+Ceci est le main AntiAlzheimer project
 """
+
 file = open("user.gks", "w")
 file.close()
 from tkinter import *
@@ -8,6 +9,9 @@ from datetime import *
 import webbrowser
 import random
 import os
+
+
+
 
 def help():
     # ouvrir une page web avec de l'aide
@@ -66,6 +70,9 @@ def co():
             pass
         reference_file = open("user.gks", "r")
 
+        user_list = reference_file.readlines
+
+
         # création du nom pour le dossier/fichier pour la sauvgarde des connexctions
         dir_name_connexction = str(user_name+"/latest connection.gks")
 
@@ -81,7 +88,6 @@ def co():
 
         # Créer (ou ouvre s'il existe déjà) le fichier de sauvegarde du journal de l'utilisateur
         fichier_journal = open(dir_name_journal, "a")
-
 
 
         # fenetre avec les exercices etc...
@@ -135,12 +141,26 @@ def co():
             for c in windowAl.winfo_children():
                 c.destroy()
 
-            main_button = Button(windowAl, text="menu", font=("courrier", 25), bg='#808080', fg='white', command=main_menu)
+            # créer une zone de texte
+            scroll = Scrollbar(windowAl)
+            text_zone = Text(windowAl, font=("Arial", 20), yscrollcommand=scroll.set)
+            scroll.config(command=text_zone.yview())
+            scroll.pack(side=RIGHT, fill=Y)
+            text_zone.pack(pady=40, fill=X, padx=5)
+
+
+            main_button = Button(windowAl, text="<", font=("courrier", 15), bg='#808080', fg='white', command=main_menu)
             main_button.pack()
-            main_button.place(x=5, y=5)
+            main_button.place(x=0, y=0)
 
             # création barre de menu
             menu_bar = Menu(windowAl)
+
+            # créer un menu d'éditeur de texte
+            text_menu = Menu(menu_bar, tearoff=0)
+            text_menu.add_command(label="enregistrer")
+            menu_bar.add_cascade(label="action", menu=text_menu)
+
             # créer un menu de navigation
             navigation_menu = Menu(menu_bar, tearoff=0)
             navigation_menu.add_command(label="menu", command=main_menu)
@@ -360,10 +380,7 @@ def co():
 
         main_menu()# faire apparaitre le main menu
 
-
-
-
-
+#####################################################################
 
 # créer la fenetre du logeur
 window = Tk()
@@ -372,6 +389,7 @@ window = Tk()
 window.title("Science plus")
 window.geometry("1080x720")
 window.minsize(480, 360)
+window.update()
 window.config(background='#ffd100')
 
 # frame
