@@ -10,9 +10,6 @@ import webbrowser
 import random
 import os
 
-
-
-
 def help():
     # ouvrir une page web avec de l'aide
     webbrowser.open_new("https://sites.google.com/view/projet-alzheimer/accueil")
@@ -44,7 +41,7 @@ def admin_interface():
 
         if menu_mode == 0:
             label_Al = Label(windowAl, text="Interface administrateur", font=("Courrier", 40), bg='#395D67',fg='#FFAA00')
-            windowAl.config(background="#395D67")
+            windowAl.config(background="#ffffff")
             label_Al.pack()
 
 
@@ -55,8 +52,10 @@ def admin_interface():
 
         windowAl.mainloop()
 
+        #############################################################################
 
 def co():
+    can_enter = False
     user_name = co_txt_entry.get()
     admin_name = user_name
     admin_name = admin_name.upper()
@@ -88,14 +87,14 @@ def co():
 
         # Créer (ou ouvre s'il existe déjà) le fichier de sauvegarde du journal de l'utilisateur
         fichier_journal = open(dir_name_journal, "a")
+        fichier_journal.close()
 
 
         # fenetre avec les exercices etc...
         windowAl = Tk()
         window.destroy()
 
-
-
+        #############################################################################
 
         def main_menu():
             for c in windowAl.winfo_children():
@@ -103,8 +102,8 @@ def co():
             windowAl.title(user_name)
             windowAl.geometry("1200x750")
             windowAl.minsize(1200, 750)
-            label_Al = Label(windowAl, text="Bonjour " + user_name, font=("Courrier", 40), bg='#808080', fg='black')
-            windowAl.config(background="#808080")
+            label_Al = Label(windowAl, text="Bonjour " + user_name, font=("Courrier", 40), bg='#048b9a', fg='black')
+            windowAl.config(background="#ffd100")
             game_button = Button(windowAl, text="Jeu de couleur", font=("courrier", 25), bg='#808080', fg='black', command=color_game)
             game_button.pack()
             game_button.place(x=250, y=200)
@@ -115,6 +114,7 @@ def co():
 
             # création barre de menu
             menu_bar = Menu(windowAl)
+            
             # créer un menu de navigation
             navigation_menu = Menu(menu_bar, tearoff=0)
             navigation_menu.add_command(label="menu", command=main_menu)
@@ -136,10 +136,17 @@ def co():
             label_Al.pack()
             windowAl.mainloop()
 
+        #############################################################################
 
         def write_his_day():
             for c in windowAl.winfo_children():
                 c.destroy()
+            
+            def save():
+                saving_text = text_zone.get(0.0, 100000000000.10000000) # récupère le texte
+                fichier_journal = open(dir_name_journal, "a") # ouvre le fichier
+                fichier_journal.write(saving_text) # sauvgarde le texte dans le fichier
+                fichier_journal.close() # ferme le fichier
 
             # créer une zone de texte
             scroll = Scrollbar(windowAl)
@@ -158,7 +165,7 @@ def co():
 
             # créer un menu d'éditeur de texte
             text_menu = Menu(menu_bar, tearoff=0)
-            text_menu.add_command(label="enregistrer")
+            text_menu.add_command(label="enregistrer", command = save)
             menu_bar.add_cascade(label="action", menu=text_menu)
 
             # créer un menu de navigation
@@ -179,15 +186,17 @@ def co():
 
             windowAl.mainloop()
 
+        #############################################################################
 
         def color_game():
             for c in windowAl.winfo_children():
                 c.destroy()
 
             def start_game():
-                level = difficuty.get()
+                level = int(difficulty.get())
+                
 
-                if level == "1":
+                if level == 1:
                     for c in windowAl.winfo_children():
                         c.destroy()
 
@@ -205,14 +214,31 @@ def co():
                     frame_exercice = LabelFrame(windowAl, text="exercice", bd=5, labelanchor='s')
 
 
+                    
+
+                    
+
+                    button_origine_1 = Button(frame_origine)
+
+
+
+                    image_1 = PhotoImage(file="carre_violet.png", master=button_origine_1)
+
+
+                    button_origine_1.pack()                  
+
+                    
+
+
 
 
                     frame_origine.pack(expand=YES)
                     frame_exercice.pack(expand=YES)
                     windowAl.mainloop()
 
+        #############################################################################
 
-                if level == "2":
+                if level == 2:
                     for c in windowAl.winfo_children():
                         c.destroy()
 
@@ -228,7 +254,9 @@ def co():
 
                     windowAl.mainloop()
 
-                if level == "3":
+        #############################################################################
+
+                if level == 3:
                     for c in windowAl.winfo_children():
                         c.destroy()
 
@@ -244,7 +272,9 @@ def co():
 
                     windowAl.mainloop()
 
-                if level == "4":
+        #############################################################################
+
+                if level == 4:
                     for c in windowAl.winfo_children():
                         c.destroy()
 
@@ -260,7 +290,9 @@ def co():
 
                     windowAl.mainloop()
 
-                if level == "5":
+        #############################################################################
+
+                if level == 5:
                     for c in windowAl.winfo_children():
                         c.destroy()
 
@@ -276,7 +308,9 @@ def co():
 
                     windowAl.mainloop()
 
-                if level == "6":
+        #############################################################################
+
+                if level == 6:
                     for c in windowAl.winfo_children():
                         c.destroy()
 
@@ -292,7 +326,9 @@ def co():
 
                     windowAl.mainloop()
 
-                if level == "7":
+        #############################################################################
+
+                if level == 7:
                     for c in windowAl.winfo_children():
                         c.destroy()
 
@@ -308,7 +344,9 @@ def co():
 
                     windowAl.mainloop()
 
-                if level == "8":
+        #############################################################################
+
+                if level == 8:
                     for c in windowAl.winfo_children():
                         c.destroy()
 
@@ -324,7 +362,9 @@ def co():
 
                     windowAl.mainloop()
 
-                if level == "9":
+        #############################################################################
+
+                if level == 9:
                     for c in windowAl.winfo_children():
                         c.destroy()
 
@@ -339,6 +379,8 @@ def co():
                     windowAl.config(menu=menu_bar)
 
                     windowAl.mainloop()
+
+        #############################################################################
 
             frame1 = Frame(windowAl, bg='#808080')
 
@@ -368,8 +410,8 @@ def co():
             label_selecteur.pack()
 
             # selecteur de difficulté du jeu
-            difficuty = Spinbox(frame1, font=("courrier", 25), bg='#808080', fg='white', buttonbackground='#FF0000', from_=1, to=9, increment=1)
-            difficuty.pack()
+            difficulty = Scale(frame1, from_=1, to=9, orient=HORIZONTAL, resolution=1, tickinterval=1, length=1000, label='Selectionneur', bg='#808080', fg='white')
+            difficulty.pack()
 
             difficulty_button = Button(frame1, text="Choisir", font=("Courrier", 20), bg='#0000FF', fg='#00FF00', command=start_game)
             difficulty_button.pack(pady=10)
@@ -380,10 +422,11 @@ def co():
 
         main_menu()# faire apparaitre le main menu
 
-#####################################################################
+        #############################################################################
 
 # créer la fenetre du logeur
 window = Tk()
+
 
 # personaliser fenetre
 window.title("Science plus")
@@ -411,4 +454,5 @@ label_connexion.pack()
 co_txt_entry.pack()
 co_button.pack(pady=25, fill=X)
 frame.pack(expand=YES)
+
 window.mainloop()
